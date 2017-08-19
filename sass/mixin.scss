@@ -1,0 +1,100 @@
+@mixin animation-fly {
+    animation: animation-fly 3500ms ease infinite;
+    @keyframes animation-fly{
+        0% {
+            transform: translateY(0%);
+        }
+
+        50% {
+            transform: translateY(8%);
+        }
+
+        100% {
+            transform: translateY(0%);
+        }
+    }
+}
+
+
+@mixin animation-breath {
+    animation: animation-breath 1.2s ease-out infinite;
+    @keyframes animation-breath {
+        0% {
+            transform: scale3d(1,1,1);
+        }
+
+        50% {
+            transform: scale3d(0.5,0.5,0.5);
+        }
+
+        100% {
+            transform: scale3d(1,1,1);
+        }
+    }    
+}
+
+@mixin decoration-bottomLine-lr ($lineColor:#c7c7c7) {
+    &::after {
+        content: "";
+        display: block;
+        height: 3px;
+        background-color: $lineColor;
+        transform-origin: left;
+        transform: scaleX(0);
+        transition: all 0.5s cubic-bezier(0, 0.5, 0.17, 1);
+    }
+    &:hover {
+        &::after {
+            transform: scaleX(1);
+        }
+    }
+}
+
+@mixin clearfix {
+    &::after {
+        content: "";
+        display: block;
+        clear: both;
+        position: absolute;
+    }
+}
+
+
+@mixin bubbles($bubbleColor:#fff) {
+    div { 
+        position: absolute;
+        width: 17px;
+        height: 17px;
+        border-radius: 20px;
+        border: 2px solid $bubbleColor;
+        cursor: pointer;
+        &:hover {
+            background-color: $bubbleColor;
+            transition: all .3s ease-in-out;
+        }
+        @include animation-breath;
+    
+        &:first-child {
+            top: 115px;
+            left: 40px;
+        }
+        &:nth-child(2) {
+            top: 293px;
+            left: 260px;
+        }
+        &:nth-child(3) {
+            top: 200px;
+            left: 323px;
+        }
+        &:last-child {
+            top:365px;
+            left: 122px;
+        }
+    
+    
+    }
+
+    
+
+   
+}

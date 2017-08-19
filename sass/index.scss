@@ -1,0 +1,306 @@
+@import "mixin.scss";
+@import "var.scss";
+@import "reset.scss";
+
+header {
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    nav {
+        height: 90px;
+        padding: 30px;
+        
+        ul {
+            @include clearfix;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            
+            li {  
+
+                text-align: center;
+
+                a {
+                
+                    font-size: $nav-fz;
+                    font-weight: $nav-fw;
+                    letter-spacing: $nav-letter-spacing;
+                }
+            }
+
+            li.logo {
+                float: left;
+                cursor: pointer;
+                img {
+                    color: #fff;
+                }
+            }
+
+            li.menu {
+                li {
+                    margin-left:25px;
+                }
+
+                .bar {
+                    cursor: pointer;
+                    display: none;
+                    @media only screen and (max-width:700px) {
+                        display:block;
+                    }
+                    span {
+                        color: $blue;
+                        
+                     
+                    }
+                }
+
+
+                li.hid {
+                    @include decoration-bottomLine-lr($blue);
+
+                     a {
+                         color: $blue;
+                     }
+
+                     @media only screen and (max-width:700px) {
+                        display:none;
+                    }
+                }
+
+
+                .login {
+                    height: 30px;
+                    width: 76px;
+                    border-radius: 15px;
+                    background-color: $blue;
+                    color: #fff;
+                    text-align: center;
+                    line-height: 27px;
+                    a {
+                    
+                        &:link {
+                        color: #fff;
+                        }
+                        &:visited {
+                        color: #fff;
+                        }
+                    }
+                    &:hover {
+                        & > a {
+                            color: $red;
+                        }
+                    }
+                
+                   
+                }
+                   
+            }
+        }
+    }
+}
+
+
+main {
+    height: 100%;
+    width: 100vw;
+    min-height: 650px;
+    overflow: hidden;
+}
+
+.white {
+    position: absolute;
+    min-height: 650px;
+    top:0;
+    bottom:0;
+    left: 0;
+    right: 0;
+    .wrap {
+        .white-left {
+            position: absolute;
+            width: 285px;
+            height: 108px;
+            left: 100px;
+            top: 40%;
+            z-index: -1;
+            text-align: center;
+            button {
+                background: none;
+                border: 2px solid $red;
+                font-weight: 600;
+                font-size: 14px;
+                color: $red;
+                width: 186px;
+                height: 50px;
+                border-radius: 25px;
+                cursor: pointer;
+            }
+            @media only screen and (max-width:770px){
+                display:none;
+            }
+        }
+        .white-main-pic {
+            height: 500px;
+            width: 500px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate3d(-50%, -50%, 0);
+            @media only screen and (max-width:500px){
+                width: 100vw;
+                height: auto;
+            }
+            .aniWrap {
+                @include animation-fly;
+                height: 100%;
+                width: 100%;
+                img {
+                height: 100%;
+                width: 100%;
+                 
+                }  
+
+                .bubbles {
+                    @include bubbles($red);
+                    @media only screen and (max-width:770px){
+                        display:none;
+                    }
+                
+                }
+            }
+        
+        }
+        .white-right {
+            position: absolute;
+            width: 285px;
+            height: 108px;
+            right: 100px;
+            top: 40%;
+            z-index: -1;
+            span {
+                color: $red;
+            }
+            @media only screen and (max-width:770px){
+                display:none;
+            }
+        }
+    }
+}
+
+.red {
+    display: inline-block;
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    background-color: $red;
+    width: 0px;
+    color: $white;
+    
+
+    .wrap {
+       
+        .red-left {
+            position: absolute;
+            width: 285px;
+            height: 108px;
+            left: 100px;
+            top: 40%;
+            color: $white;
+            text-align: center;
+            button {
+                background: none;
+                border: 2px solid #fff;
+                font-weight: 600;
+                font-size: 14px;
+                color: #fff;
+                width: 186px;
+                height: 50px;
+                border-radius: 25px;
+                cursor: pointer;
+            }
+        @media only screen and (max-width:770px){
+            display:none;
+        }
+     
+        }
+        .red-main-pic {
+        
+            height: 500px;
+            width: 500px;
+            position: absolute;
+            top: 50%;
+            left:50%;
+            transform: translate3d(-50%, -50%, 0);
+            @media only screen and (max-width:500px){
+                width: 100vw;
+                height: auto;
+            }
+                
+        
+       
+        .aniWrap {
+            height: 100%;
+            width: 100%;
+            @include animation-fly;
+            img {
+            height: 100%;
+            width: 100%;
+              
+            }  
+
+            .bubbles {
+                @include bubbles;
+                @media only screen and (max-width:770px){
+                display:none;
+                }
+              
+            }
+        }
+      
+        }
+        .red-right {
+            position: absolute;
+            width: 285px;
+            height: 108px;
+            right: 100px;
+            top: 40%;
+            @media only screen and (max-width:770px){
+                display:none;
+            }
+        }
+    }
+ 
+}
+
+#line {
+    display: inline-block;
+    position: absolute;
+    height: 100%;
+    min-height: 650px;
+    width: 2px;
+    background-color: $red;
+    cursor: move;
+    span {
+        position: absolute;
+        top: 50%;
+        transform: translateX(-50%);
+        display: inline-block;
+        height: 30px;
+        width: 30px;
+        border-radius: 15px;
+        background-color: darken($red, 4%);
+        color: #fff;
+        text-align: center;
+        line-height: 30px;
+        cursor: move;
+      
+        
+    }
+}
+
+.wrap {
+    position: relative;
+    min-height: 650px;
+    height: 100vh;
+    width: 100vw;
+        
+}
